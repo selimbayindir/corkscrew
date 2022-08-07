@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Business.Concrete
 {
     public class ProductManager : IProductService
-    {
+            {
         IProductDal _productDal;
 
         public ProductManager(IProductDal productDal)
@@ -18,18 +18,14 @@ namespace Business.Concrete
             _productDal = productDal;
         }
 
-        public List<Product> Get()
+        public List<Product> GetList()
         {
             return _productDal.GetAll();
         }
 
-        public List<Product> GetAllByCategoryId(int id)
+        public List<Product> GetMyList()
         {
-            return _productDal.GetAll(p => p.CategoryId == id);
-
-
+            return _productDal.MyList();
         }
-
-
     }
 }

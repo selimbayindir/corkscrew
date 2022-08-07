@@ -8,17 +8,10 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IProductService<T>
+    public interface IProductService
     {
-        List<Product> Get();
-        List<Product> GetAllByCategoryId(int id);
-        List<T> GetAll(Expression<Func<T, bool>> filter = null); //filtre vermesende olur
-
-        //List<Product> GetByUnitPrice(decimal min, decimal max);
-
-        //List<ProductDetailDto> GetProductDetails();
-        //Product GetById(int productId);
-        //IResult Add(Product product);
+        List<Product> GetList();
+        List<Product> GetMyList();
 
     }
 }

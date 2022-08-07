@@ -11,7 +11,7 @@ static void ProductNameList()
     ProductManager productManager = new ProductManager(new InMemoryProductDal());
 
     // ProductManager productManager = new ProductManager(new InMemoryProductDal());
-    foreach (var item in productManager.GetAllByCategoryId(2)) // GetAllByCategoryId(2)  //GetByUnitPrice(50,100)
+    foreach (var item in productManager.GetMyList()) // GetAllByCategoryId(2)  //GetByUnitPrice(50,100)
     {
         Console.WriteLine(item.ProductName);
     }
