@@ -17,10 +17,8 @@ namespace DataAccess.Concrete.InMemory
         {
             _products = new List<Product>
             {
-               new(1,"Nescafe Express Vanilya",6,"10",18,101),
-               new(2,"Nescafe Express Cafe Choco",5,"50",18,200),
-               new(3,"Laptop",17,"10,",18,99),
-               new(4,"Mouse",9,"100",180,199),
+               new (1,1,"deneme",100,15)
+             
             };
         }
 

@@ -1,4 +1,5 @@
 ﻿using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,12 @@ namespace DataAccess.Concrete.EntityFramework
 
         public List<Category> GetAll(Expression<Func<Category, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (NortwindContext context = new NortwindContext())
+            {
+                return filter == null
+                     ? context.Set<Category>().ToList()
+                     : context.Set<Category>().Where(filter).ToList();
+            }
         }
 
         public void Update(Category entity)

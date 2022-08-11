@@ -12,8 +12,9 @@ namespace DataAccess.Concrete.EntityFramework.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=BYNDR\PIPLE;Initial Catalog=Northwind;User ID=dw;Password=Perkon123456;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-    }
+            optionsBuilder.UseSqlServer(@"Data Source=SELIM-BAYINDIR\ARC;Initial Catalog=Northwind;User ID=sa;Password=Perkon123456;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;
+               ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }

@@ -1,4 +1,5 @@
-﻿using DataAccess.Abstract;
+﻿
+using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework.Context;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
@@ -13,8 +14,6 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProductDal : IProductDal
     {
-
-
         public void Add(Product product)
         {
             using (NortwindContext context = new NortwindContext())
@@ -47,10 +46,9 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (NortwindContext context = new NortwindContext())
             {
-                //ternary Excep0tion 
-                return filter == null 
-                    ? context.Set<Product>().ToList() 
-                    : context.Set<Product>().Where(filter).ToList();
+               return filter==null
+                    ?context.Set<Product>().ToList()
+                    :context.Set<Product>().Where(filter).ToList();
             }
         }
         public List<Product> MyList()

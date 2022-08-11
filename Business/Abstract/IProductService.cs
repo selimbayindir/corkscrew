@@ -12,8 +12,7 @@ namespace Business.Abstract
     {
         List<Product> GetList();
         List<Product> GetAllByCategoryId(int id);
-        List<Product> GetAllByCategoryName(string name); //control 
-        List<Product> GetByUnitPrice(decimal max,decimal min);//control
+        List<Product> GetByUnitPrice(decimal min,decimal max);//control //test
         List<Product> GetMyList();
 
     }
