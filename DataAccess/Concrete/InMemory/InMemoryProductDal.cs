@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,11 @@ namespace DataAccess.Concrete.InMemory
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
             return _products;
+        }
+
+        public List<ProductDetailDto> GetproductDetailDtos()
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> MyList()

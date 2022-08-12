@@ -41,7 +41,7 @@ static void GetById(int fisno)
     Console.WriteLine(customer4.OrderId + " " + customer4.OrderDate + " " + customer4.ShipCity);
 }
 
-GetByCustomerId();
+//GetByCustomerId();
 
 static void GetByCustomerId()
 {
@@ -56,3 +56,8 @@ static void GetByCustomerId()
 
 }
 
+ProductManager productManager = new ProductManager(new EfProductDal());
+foreach (var item in productManager.GetProductDtos())
+{
+    Console.WriteLine(item.ProductName+"*/"+item.CategoryName);
+}

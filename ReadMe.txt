@@ -8,3 +8,7 @@ Data Access
         {
             return _productDal.GetAll(p => p.CategoryId == id);
         }
+
+
+
+        Generate new type =>Core Entities/IDto
