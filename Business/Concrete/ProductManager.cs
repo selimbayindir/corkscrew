@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -17,6 +19,19 @@ namespace Business.Concrete
         public ProductManager(IProductDal productDal)
         {
             _productDal = productDal;
+        }
+
+        public IResult Add(Product product)
+        {
+            if (product.ProductName.Length<2)
+            {
+                return new ErrorResult(Messages.ProductNameInvalid);
+            }
+         
+            _productDal.Add(product);
+
+            /// return new Result(true,"Urun Eklendi");
+             return new SuccessResult(Messages.ProductAdded);
         }
 
         public List<Product> GetAllByCategoryId(int id)

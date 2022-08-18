@@ -2,6 +2,8 @@
 using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
+using Entities.Concrete;
+using System;
 
 
 
@@ -56,8 +58,24 @@ static void GetByCustomerId()
 
 }
 
-ProductManager productManager = new ProductManager(new EfProductDal());
-foreach (var item in productManager.GetProductDtos())
+//joinoperation();
+
+static void joinoperation()
 {
-    Console.WriteLine(item.ProductName+"*/"+item.CategoryName);
+    ProductManager productManager = new ProductManager(new EfProductDal());
+    foreach (var item in productManager.GetProductDtos())
+    {
+        Console.WriteLine(item.ProductName + "*/" + item.CategoryName);
+    }
 }
+
+//ProductManager productManager = new ProductManager(new EfProductDal());
+//Added();
+
+//static void Added(ProductManager personManager)
+//{
+//    Product people = new Product(1,2,"a",10,100);
+//    personManager.Add(people);
+
+//    Console.WriteLine("Personel Kaydedilmiştir." + people.ProductId + " " + people.ProductName);
+//}
