@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Utilities.Results
+namespace Core.Utilities.Results.Abstract
 {
     /// <summary>
     /// Temel Voidler için 
@@ -12,10 +12,10 @@ namespace Core.Utilities.Results
     public interface IResult
     {
 
-      bool IsSuccess { get; } //sadece okunabilir
-      
-      string Message { get; }
-      
+        bool IsSuccess { get; } //sadece okunabilir
+
+        string Message { get; }
+
 
     }
 }
