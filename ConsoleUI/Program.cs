@@ -14,7 +14,7 @@ static void ProductNameList()
     ProductManager productManager = new ProductManager(new EfProductDal());
 
     // ProductManager productManager = new ProductManager(new InMemoryProductDal());
-    foreach (var item in productManager.GetByUnitPrice(18, 55)) //GetList() , GetAllByCategoryId(1) , 
+    foreach (var item in productManager.GetByUnitPrice(18, 55).Data) //GetList() , GetAllByCategoryId(1) , 
     {
         Console.WriteLine(item.ProductName + "============================>" + item.UnitPrice);
     }
@@ -63,7 +63,7 @@ static void GetByCustomerId()
 static void joinoperation()
 {
     ProductManager productManager = new ProductManager(new EfProductDal());
-    foreach (var item in productManager.GetProductDtos())
+    foreach (var item in productManager.GetProductDtos().Data)
     {
         Console.WriteLine(item.ProductName + "*/" + item.CategoryName);
     }
@@ -79,3 +79,25 @@ static void joinoperation()
 
 //    Console.WriteLine("Personel Kaydedilmiştir." + people.ProductId + " " + people.ProductName);
 //}
+
+
+
+ProductTest();
+
+static void ProductTest()
+{
+    ProductManager productManager = new ProductManager(new EfProductDal());
+    var result = productManager.GetProductDtos();
+    if (result.IsSuccess == true)
+    {
+        foreach (var item in result.Data)
+        {
+            Console.WriteLine(item.ProductName + "/" + item.CategoryName);
+        }
+
+    }
+    else
+    {
+        Console.WriteLine(result.Message);
+    }
+}
