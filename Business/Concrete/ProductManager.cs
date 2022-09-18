@@ -8,6 +8,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,11 @@ namespace Business.Concrete
         {
             _productDal = productDal;
         }
-
+        //[LogAspect] --->AOP
+        //[Validate]
+        //[RemoveCache]
+        //[Transaction ]
+        //[Performance]
         public IResult Add(Product product) //İMZAYA UYDUR
         {
             if (product.ProductName.Length < 2)
@@ -42,6 +47,12 @@ namespace Business.Concrete
                 _productDal.GetAll(p => p.CategoryId == id));
         }
 
+        public IDataResult<Product> GetById(int id)
+        {
+            return new SuccessDataResult<Product>(
+                _productDal.Get(p => p.ProductId == id));
+        }
+
         public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)
         {
             var price = _productDal.GetAll(p => p.UnitPrice >= min && p.UnitPrice <= max);
@@ -53,12 +64,16 @@ namespace Business.Concrete
         {
             /// return _productDal.GetAll();
             ///  return new DataResult<List<Product>>(_productDal.GetAll(),true,"Urunler Listelendi");
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 10)
             {
-                return new ErrorDataResult<List<Product>>(_productDal.GetAll(), Messages.MaintenanceTime);
+                return new ErrorDataResult<List<Product>>(
+
+                    _productDal.GetAll(), Messages.MaintenanceTime);
 
             }
-            return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductList);
+            return new SuccessDataResult<List<Product>>(
+                
+                _productDal.GetAll(), Messages.ProductList);
 
 
         }

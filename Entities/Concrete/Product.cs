@@ -13,6 +13,13 @@ namespace Entities.Concrete
         {
 
         }
+        public Product(int categoryId, string productName, short unitsInStock, decimal unitPrice)
+        {
+            CategoryId = categoryId;
+            ProductName = productName;
+            UnitsInStock = unitsInStock;
+            UnitPrice = unitPrice;
+        }
         public Product(int productId, int categoryId, string productName, short unitsInStock, decimal unitPrice)
         {
             ProductId = productId;
@@ -21,6 +28,7 @@ namespace Entities.Concrete
             UnitsInStock = unitsInStock;
             UnitPrice = unitPrice;
         }
+
 
         public int ProductId { get; set; }
         public int CategoryId { get; set; }
