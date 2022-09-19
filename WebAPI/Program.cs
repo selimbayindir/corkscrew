@@ -1,5 +1,7 @@
+using Autofac;
 using Business.Abstract;
 using Business.Concrete;
+using Business.DependecyResolvers.Autofac;
 using DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 #region My
-builder.Services.AddPersistenceServices();
+//builder.Services.AddPersistenceServices();
+///Autofac
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+builder.Host.ConfigureContainer<ContainerBuilder>(options =>
+{
+    options.RegisterModule(new AutofacBusinessModule());
+});
 #endregion
 
 

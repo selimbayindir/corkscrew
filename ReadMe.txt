@@ -12,3 +12,10 @@ Data Access
 
 
         Generate new type =>Core Entities/IDto
+
+
+         //BUSÝNESS
+        AUTOFAC 165M
+        AUTOFAC Extrass (Dynamic.Proxy)
+       DependecyResolver Baðýmlýlýk Çözümleyicilerimiz Burda Autofac
+
