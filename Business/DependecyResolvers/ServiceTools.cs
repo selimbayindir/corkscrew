@@ -9,10 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess
+namespace Business.DependecyResolvers
 {
     public static class ServiceTools
     {
+        /// <summary>
+        /// IOC CONTAİNER ŞU ANDA KULLANILMIYOR
+        /// </summary>
+        /// <param name="services"></param>
         public static void AddPersistenceServices(this IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductManager>();

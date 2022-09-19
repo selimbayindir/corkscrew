@@ -12,8 +12,8 @@ namespace DataAccess.Concrete.EntityFramework.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //HomeWork(optionsBuilder);
-            JobWork(optionsBuilder);
+            HomeWork(optionsBuilder);
+            //JobWork(optionsBuilder);
         }
 
         private static void JobWork(DbContextOptionsBuilder optionsBuilder)
