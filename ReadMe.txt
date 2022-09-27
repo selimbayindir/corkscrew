@@ -20,3 +20,6 @@ Data Access
         Autofac dependecy Injection
        DependecyResolver Baðýmlýlýk Çözümleyicilerimiz Burda Autofac
 
+       Fluent Validation - Jeremy Skinner
+
+       Cross Cutting Concerns

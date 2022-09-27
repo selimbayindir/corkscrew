@@ -1,17 +1,21 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCuttingConcerns;
 using Core.Utilities.Results;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ValidationException = FluentValidation.ValidationException;
 
 namespace Business.Concrete
 {
@@ -30,11 +34,21 @@ namespace Business.Concrete
         //[Performance]
         public IResult Add(Product product) //İMZAYA UYDUR
         {
-            if (product.ProductName.Length < 2)
-            {
-                return new ErrorResult(Messages.ProductNameInvalid);
-            }
+            //if (product.ProductName.Length < 2)
+            //{
+            //    return new ErrorResult(Messages.ProductNameInvalid);
+            //}
 
+            //Fluent  Generic hale getiriyoruz.
+
+            //var context = new ValidationContext<Product>(product);
+            //ProductValidator productValidator = new ProductValidator();
+            //var result = productValidator.Validate(context);
+            //if (!result.IsValid)
+            //{
+            //    throw new ValidationException(result.Errors);
+            //}
+            ValidationTool.dw(new ProductValidator(), product);
             _productDal.Add(product);
 
             /// return new Result(true,"Urun Eklendi");
@@ -72,7 +86,7 @@ namespace Business.Concrete
 
             }
             return new SuccessDataResult<List<Product>>(
-                
+
                 _productDal.GetAll(), Messages.ProductList);
 
 
@@ -85,7 +99,7 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetProductDtos()
         {
-            if (DateTime.Now.Hour==02)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<List<ProductDetailDto>>((Messages.MaintenanceTime));
 
