@@ -1,6 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
+using Castle.DynamicProxy;
+using Core.Utilities.Interceptors;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using System;
@@ -22,7 +25,16 @@ namespace Business.DependecyResolvers.Autofac
             builder.RegisterType<EfOrderDal>().As<IOrderDal>().SingleInstance();
             builder.RegisterType<CategoryManager>().As<ICategoryService>().SingleInstance();
             builder.RegisterType<EfCategoryDal>().As<ICategoryDal>().SingleInstance();
+            ///
+            //Execute Aspect 
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+                .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+                {
+                    Selector = new AspectInterceptorSelector()
+                }).SingleInstance();
+            ///
         }
     }
 }

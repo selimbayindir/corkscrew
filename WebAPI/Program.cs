@@ -22,6 +22,9 @@ builder.Host.ConfigureContainer<ContainerBuilder>(options =>
 {
     options.RegisterModule(new AutofacBusinessModule());
 });
+
+///AspectValidation
+///
 #endregion
 
 

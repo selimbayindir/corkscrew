@@ -15,6 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Core.Aspect.Autofac.AspectInterceptorSelector;
 using ValidationException = FluentValidation.ValidationException;
 
 namespace Business.Concrete
@@ -32,6 +33,7 @@ namespace Business.Concrete
         //[RemoveCache]
         //[Transaction ]
         //[Performance]
+        [ValidationAspect(typeof(ProductValidator))] //Add Metedunu doğrula ProductValidator Kullanarak
         public IResult Add(Product product) //İMZAYA UYDUR
         {
             //if (product.ProductName.Length < 2)
@@ -48,7 +50,7 @@ namespace Business.Concrete
             //{
             //    throw new ValidationException(result.Errors);
             //}
-            ValidationTool.dw(new ProductValidator(), product);
+                             ///  ValidationTool.dw(new ProductValidator(), product); // =>[ValidationAspect(typeof(ProductValidator))]
             _productDal.Add(product);
 
             /// return new Result(true,"Urun Eklendi");
